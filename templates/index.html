@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="\static\index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link href='https://fonts.googleapis.com/css?family=Fugaz One' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zomato Bangalore Analysis</title>
+    
+</head>
+<body>
+  <center>
+  <div name="zhead" style="
+  background-color: rgba(255, 255, 255, 0.582);;
+  width:50%;
+  border: 0px;
+  border-radius:30px;
+  ">
+   <h1>ZOMATO BANGALORE ANALYSIS</h1>
+  </div>
+</center>
+<div class="filter">
+  
+  <form action="/loc">
+    <label>Get Dataframe</label>
+    <p name="head">Filter Dataset</p>
+    Location<SELECT name="location" >
+      <option>--default--</option>
+      {% for c in cityList %}
+        <option value={{c}}>{{c}}</option>
+      {% endfor %}
+      </SELECT>
+    Rest_Type<SELECT name="rest_type" >
+      <option>--default--</option>
+      {% for r in restypelist %}
+        <option value={{r}}>{{r}}</option>
+      {% endfor %}
+      </SELECT>
+    Cost<SELECT name="cost" >
+      <option>--default--</option>
+      {% for p in costlist %}
+        <option value={{p}}>{{p}}</option>
+      {% endfor %}
+      </SELECT>
+    <button type="submit">Search</button>
+  </form>
+</div>
+<div id="ana">
+  <form action="/Overall" method="get"><p><label>Analyse</label><p>
+
+    <input type="radio" name="o" autocomplete="false" autofocus>Overall Analysis
+    <button type="submit">Search</button>
+  </form>
+  <form action="/nwise" method="get">
+
+    <input type="radio" name="n" autocomplete="false" autofocus>Name_Wise Analysis
+    
+<div name="nfil" style="padding-left:20px ;">
+      Name<SELECT name="name" >
+      <option>--default--</option>
+      {% for n in namelist %}
+        <option value={{n}}>{{n}}</option>
+      {% endfor %}
+      </SELECT>
+    
+    <button type="submit">Search</button>
+  </form>
+</div>
+  <form action="/lwise" method="get">
+    <input type="radio" name="lo" autocomplete="false" autofocus>Location_Wise Analysis
+<div name='lfill' style="padding-left:20px ;">
+      Location<SELECT name="loname" >
+      <option>--default--</option>
+      {% for c in cityList %}
+        <option value={{c}}>{{c}}</option>
+      {% endfor %}
+      </SELECT>
+    
+    <button type="submit">Search</button>
+  </form>
+</div>
+</div>
+<div id="book">
+  <form action="/book" method="get">
+    <p name="head"><label>Book Outlet!</label></p>
+    
+      Name<SELECT name="name2" >
+      <option>--default--</option>
+      {% for n in namelist %}
+        <option value={{n}}>{{n}}</option>
+      {% endfor %}
+      </SELECT>
+      Location<SELECT name="location" >
+        <option>--default--</option>
+        {% for c in cityList %}
+          <option value={{c}}>{{c}}</option>
+        {% endfor %}
+        </SELECT>
+    
+    
+    <button type="submit">Book Now!!</button>
+    {{Place}}
+  </form>
+</div>
+<div name="stats">
+  <center class="stats">
+    <p>{{nolocname}} </p>
+    <p>{{nolocrest}}  </p>
+    <p>{{nolocui}}</p>
+    <p>{{noloc}}</p>
+  </center>
+</div>
+  {% for table in tables %}
+  {{ table|safe }}
+  {% endfor %}    
+  <p>
+  <div id='chart' class='chart'”></div>
+  <div id='chart2' class='chart2'”></div>
+  <div id='chart3' class='chart3'”></div>
+  <div id='chart4' class='chart4'”></div>
+  <div>
+  <div id='chart5' class='chart5'”></div>
+  <div id='chart6' class='chart6'”></div>
+  </div>
+  <div id='chart7' class='chart7'”></div>
+  <div id='chart8' class='chart8'”></div>
+  
+  </p>
+
+
+</body>
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script type='text/javascript'>
+   var graphs={{graphJSON | safe}}; 
+   var graphs2={{graphJSON2 | safe}};
+   var graphs3={{graphJSON3 | safe}};
+   var graphs4={{graphJSON4 | safe}};
+   var graphs5={{graphJSON5 | safe}};
+   var graphs6={{graphJSON6 | safe}};
+   var graphs7={{graphJSON7 | safe}};
+   var graphs8={{graphJSON8 | safe}};
+  
+  Plotly.plot('chart2',graphs2,{});
+  Plotly.plot('chart3',graphs3,{});
+  Plotly.plot('chart4',graphs4,{});
+  Plotly.plot('chart5',graphs5,{});
+  Plotly.plot('chart6',graphs6,{});
+  Plotly.plot('chart7',graphs7,{});
+  Plotly.plot('chart8',graphs8,{});
+  Plotly.plot('chart',graphs,{});
+
+
+</script>
+</html>
