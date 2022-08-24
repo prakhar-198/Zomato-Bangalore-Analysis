@@ -1,5 +1,6 @@
+Flask
 plotly
-pandas
-pickle
-numpy
 seaborn
+matplotlib
+pandas
+numpy
